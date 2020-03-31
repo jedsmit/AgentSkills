@@ -49,5 +49,49 @@ userRouter.get('/logout', passport.authenticate('jwt', { session: false }), (req
     res.json({ user: { username: "", role: "", }, success: true });
 });
 
-module.exports = userRouter;
+userRouter.post('/note', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const note = new Note(req.body);
+    note.save(err => {
+        if (err)
+            res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+        else {
+            req.user.notes.push(note);
+            req.user.save(err => {
+                if (err)
+                    res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+                else {
+                    res.status(200).json({ meesage: { msgBody: "Successfully created note", msgError: false } });
+                }
+            });
+        }
+    });
+});
+//user notes
+userRouter.get('/notes', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id }).populate('notes').exec((err, document) => {
+        if (err)
+            res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+        else {
+            res.status(200).json({ notes: document.notes, authenticted: true });
+        }
+    })
+});
+//admin panel
+userRouter.get('/admin', passport.authenticate('jwt', { session: false }), (req, res) => {
+    if (req.user.role === 'admin') {
+        res.status(200).json({ message: { msgBody: 'You are an admin', msgError: false } })
+    }
+    else {
+        res.status(403).json({ message: { msgBody: "You're not an admin, nice try", msgError: true } });
+    }
+});
 
+userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    const { username, role } = req.user;
+    res.status(200).json({ isAuthenticated: true, user: { username, role } });
+});
+
+
+
+module.exports = userRouter;
