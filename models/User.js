@@ -39,7 +39,7 @@ UserSchema.methods.comparePassword = function (password, cb) {
                 return cb(null, isMatch);
             return cb(null, this);
         }
-    })
+    });
 }
 
 module.exports = mongoose.model('User', UserSchema);
