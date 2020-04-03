@@ -20,37 +20,38 @@ const Navbar = props => {
     const unauthenticatedNavBar = () => {
         return (
             <>
-                <link to="/">
+                <Link to="/">
                     <li className="nav-item nav-link">
                         Home
                     </li>
-                </link>
-                <link to="/login">
+                </Link>
+                <Link to="/login">
                     <li className="nav-item nav-link">
                         Login
                     </li>
-                </link>
-                <link to="/register">
+                </Link>
+                <Link to="/register">
                     <li className="nav-item nav-link">
                         Register
                      </li>
-                </link>
+                </Link>
             </>
         )
     }
+
     const authenticatedNavBar = () => {
         return (
             <>
-                <link to="/">
+                <Link to="/">
                     <li className="nav-item nav-link">
                         Home
                     </li>
-                </link>
-                <link to="/notes">
+                </Link>
+                <Link to="/notes">
                     <li className="nav-item nav-link">
                         Notes
                     </li>
-                </link>
+                </Link>
 
                 {/* only render Admin if user is admin */}
                 {
@@ -67,6 +68,7 @@ const Navbar = props => {
             </>
         )
     }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
