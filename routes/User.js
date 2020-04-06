@@ -4,7 +4,7 @@ const passport = require('passport');
 const passportConfig = require('../passport');
 const JWT = require('jsonwebtoken');
 const User = require('../models/User');
-const Note = require('../models/Note');
+const Agent = require('../models/Agent');
 
 
 const signToken = userId => {
@@ -14,6 +14,7 @@ const signToken = userId => {
     }, "SuperSecret", { expiresIn: "1h" })
 }
 
+//register new user
 userRouter.post('/register', (req, res) => {
     const { username, password, role } = req.body;
     User.findOne({ username }, (err, user) => {
@@ -35,6 +36,7 @@ userRouter.post('/register', (req, res) => {
     });
 });
 
+//login user
 userRouter.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     if (req.isAuthenticated()) {
         const { _id, username, role } = req.user;
@@ -44,11 +46,13 @@ userRouter.post('/login', passport.authenticate('local', { session: false }), (r
     }
 });
 
+//logout user
 userRouter.get('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.clearCookie('access_token');
     res.json({ user: { username: "", role: "", }, success: true });
 });
 
+//add note
 userRouter.post('/note', passport.authenticate('jwt', { session: false }), (req, res) => {
     const note = new Note(req.body);
     note.save(err => {
@@ -66,6 +70,7 @@ userRouter.post('/note', passport.authenticate('jwt', { session: false }), (req,
         }
     });
 });
+
 //user notes
 userRouter.get('/notes', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById({ _id: req.user._id }).populate('notes').exec((err, document) => {
@@ -76,6 +81,7 @@ userRouter.get('/notes', passport.authenticate('jwt', { session: false }), (req,
         }
     })
 });
+
 //admin panel
 userRouter.get('/admin', passport.authenticate('jwt', { session: false }), (req, res) => {
     if (req.user.role === 'admin') {
@@ -86,8 +92,31 @@ userRouter.get('/admin', passport.authenticate('jwt', { session: false }), (req,
     }
 });
 
+//admin add agent
+userRouter.post('/admin/agent', passport.authenticate('jwt', { session: false }), (req, res) => {
+    if (req.user.role === 'admin') {
+        const agent = new Agent(req.body);
+        agent.save(err => {
+            if (err)
+                res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+            else {
+                req.user.agents.push(agent);
+                req.user.save(err => {
+                    if (err)
+                        res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+                    else {
+                        res.status(200).json({ message: { msgBody: "Successfully created agent", msgError: false } });
+                    }
+                });
+            }
+        });
+    }
+    else {
+        res.status(403).json({ message: { msgBody: "You're not an admin, nice try", msgError: true } });
+    };
+})
+//authenticates user
 userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
-
     const { username, role } = req.user;
     res.status(200).json({ isAuthenticated: true, user: { username, role } });
 });
