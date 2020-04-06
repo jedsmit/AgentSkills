@@ -4,6 +4,9 @@ import Home from "./Components/Home";
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Notes from './Components/Notes';
+import Admin from './Components/Admin';
+import PrivateRoute from './hocs/PrivateRoute';
+import PublicRoute from './hocs/PublicRoute';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -12,9 +15,10 @@ function App() {
     <Router>
       <Navbar />
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/notes" component={Notes} />
+      <PublicRoute path="/login" component={Login} />
+      <PublicRoute path="/register" component={Register} />
+      <PrivateRoute path="/notes" roles={['user', 'admin']} component={Notes} />
+      <PrivateRoute path="/admin" roles={['admin']} component={Admin} />
     </Router>
   );
 }
