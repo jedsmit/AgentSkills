@@ -6,7 +6,6 @@ import { AuthContext } from '../Context/AuthContext';
 const Navbar = props => {
     const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
 
-
     //logout handler
     const onClickLogoutHandler = () => {
         AuthService.logout().then(data => {
@@ -47,9 +46,9 @@ const Navbar = props => {
                         Home
                     </li>
                 </Link>
-                <Link to="/notes">
+                <Link to="/agents">
                     <li className="nav-item nav-link">
-                        Notes
+                        Agents
                     </li>
                 </Link>
 
@@ -73,7 +72,7 @@ const Navbar = props => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
             <Link to='/'>
-                <div className="navbar-brand">Poop</div>
+                <div className="navbar-brand">{user.username}</div>
             </Link>
 
             <div className="collapse navbar-collapse" id="navbarText">

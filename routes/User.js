@@ -77,7 +77,31 @@ userRouter.get('/notes', passport.authenticate('jwt', { session: false }), (req,
         if (err)
             res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
         else {
-            res.status(200).json({ notes: document.notes, authenticted: true });
+            res.status(200).json({ notes: document.notes, authentictaed: true });
+        }
+    })
+});
+
+//agent list 
+userRouter.get('/agents', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Agent.find((err, document) => {
+        if (err)
+            res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+        else {
+            console.log(document)
+            res.status(200).json({ agents: document, authenticated: true });
+        }
+    })
+});
+
+//agent page
+userRouter.get('/agent/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const _id = req.params.id;
+    Agent.findById({ _id: _id }).populate('games').exec((err, document) => {
+        if (err)
+            res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
+        else {
+            res.status(200).json({ notes: document.notes, authentictaed: true });
         }
     })
 });

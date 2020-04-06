@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import NoteItem from './NoteItem';
-import NoteService from '../Services/NoteService';
+import Agent from './Agent';
+import AgentService from '../Services/AgentService';
 import Message from './Message';
 import { AuthContext } from '../Context/AuthContext';
 
@@ -12,6 +12,7 @@ const AgentList = props => {
 
     useEffect(() => {
         AgentService.getAgents().then(data => {
+            console.log(data);
             setAgents(data.agents);
         });
     }, []);
@@ -50,13 +51,13 @@ const AgentList = props => {
         <div>
             <ul className="list-group">
                 {
-                    agents.map(note => {
+                    agents.map(agent => {
                         return <Agent key={agent._id} agent={agent} />
                     })
                 }
             </ul>
             <br />
-            <form onSubmit={onSubmit}>
+            {/* <form onSubmit={onSubmit}>
                 <label htmlFor='agent'>Agent Name</label>
                 <input type="text"
                     name='agent'
@@ -65,12 +66,12 @@ const AgentList = props => {
                     className='form-control'
                     placeholder='Agent name' />
                 <button className="btn btn-lg btn-primary">Submit</button>
-            </form>
+            </form> */}
             {message ? <Message message={message} /> : null}
         </div>
     )
 
 }
 
-export default Notes;
+export default AgentList;
 

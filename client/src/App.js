@@ -3,8 +3,9 @@ import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Login from './Components/Login';
 import Register from './Components/Register';
-import Notes from './Components/Notes';
+import AgentList from './Components/AgentList';
 import Admin from './Components/Admin';
+import AgentPage from "./Components/AgentPage";
 import PrivateRoute from './hocs/PrivateRoute';
 import PublicRoute from './hocs/PublicRoute';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -17,8 +18,9 @@ function App() {
       <Route exact path="/" component={Home} />
       <PublicRoute path="/login" component={Login} />
       <PublicRoute path="/register" component={Register} />
-      <PrivateRoute path="/notes" roles={['user', 'admin']} component={Notes} />
+      <PrivateRoute path="/agents" roles={['user', 'admin']} component={AgentList} />
       <PrivateRoute path="/admin" roles={['admin']} component={Admin} />
+      <PrivateRoute path="/agent/:id" roles={['user', 'admin']} component={AgentPage} />
     </Router>
   );
 }
