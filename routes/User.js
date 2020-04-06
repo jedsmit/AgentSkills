@@ -60,7 +60,7 @@ userRouter.post('/note', passport.authenticate('jwt', { session: false }), (req,
                 if (err)
                     res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
                 else {
-                    res.status(200).json({ meesage: { msgBody: "Successfully created note", msgError: false } });
+                    res.status(200).json({ message: { msgBody: "Successfully created note", msgError: false } });
                 }
             });
         }
