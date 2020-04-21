@@ -15,8 +15,8 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         required: true
     },
-    notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }],
-    agents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }]
+    // notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }],
+    // agents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }]
 
 });
 //checks for password

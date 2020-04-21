@@ -6,8 +6,42 @@ const AgentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    games:
-        [{ type: mongoose.Schema.Types.ObjectId, ref: 'Game' }]
+    gameScores:
+        [
+            {
+                blackjack:
+                {
+                    type: Number
+                },
+                poker: {
+                    type: Number
+                },
+                fortunePaiGow: {
+                    type: Number
+                },
+                craps: {
+                    type: Number
+                },
+                roulette: {
+                    type: Number
+                },
+                bjVariants: {
+                    type: Number
+                },
+                pkVariants: {
+                    type: Number
+                },
+                war: {
+                    type: Number
+                },
+                pgVariants: {
+                    type: Number
+                },
+                paiGowTiles: {
+                    type: Number
+                },
+            }
+        ]
     ,
     notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
 

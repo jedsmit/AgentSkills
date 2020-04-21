@@ -4,7 +4,6 @@ export default {
         return fetch('user/agents')
             .then(response => {
                 if (response.status !== 401) {
-                    console.log(response)
                     return response.json().then(data => data);
                 }
                 else
@@ -12,12 +11,22 @@ export default {
             });
     },
 
-    getAgent: agent => {
-        return fetch('/user/agent/:id')
-            .then(res => res.json())
-            .then(data => data);
-    },
+    getAgent: (id) => {
+        return fetch(('/user/agent/' + id), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.status !== 401) {
+                console.log(response)
+                return response.json().then(data => data);
+            }
+            else
+                return { message: { msgBody: "Unauthorized" }, msgError: true };
 
+        })
+    },
     postAgent: agent => {
         return fetch('/user/agent', {
             method: 'post',

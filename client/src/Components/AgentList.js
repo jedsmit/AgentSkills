@@ -1,74 +1,68 @@
 import React, { useEffect, useState, useContext } from 'react';
-import Agent from './Agent';
 import AgentService from '../Services/AgentService';
 import Message from './Message';
 import { AuthContext } from '../Context/AuthContext';
+import { AgentContext } from '../Context/AgentContext';
+import { Link } from "react-router-dom";
+import AgentListItem from "./AgentListItem"
+import AgentPage from './AgentPage';
 
 const AgentList = props => {
-    const [agent, setAgent] = useState({ name: "" });
     const [agents, setAgents] = useState([])
     const [message, setMessage] = useState(null);
     const authContext = useContext(AuthContext);
+    const { agent, setAgent } = useContext(AgentContext);
 
     useEffect(() => {
         AgentService.getAgents().then(data => {
-            console.log(data);
+            console.log(data)
             setAgents(data.agents);
         });
     }, []);
 
-    // const onSubmit = e => {
-    //     e.preventDefault();
-    //     NoteService.postNote(note).then(data => {
-    //         console.log(data);
-    //         const { message } = data;
-    //         resetForm();
-    //         if (!message.msgError) {
-    //             NoteService.getNotes().then(getData => {
-    //                 setNotes(getData.notes);
-    //                 setMessage(message);
-    //             });
-    //         } else if (message.msgBody === "Unauthorized") {
-    //             setMessage(message);
-    //             authContext.setUser({ username: "", role: "" });
-    //             authContext.setIsAuthenticated(false);
-    //         }
-    //         else {
-    //             setMessage(message);
-    //         };
-    //     });
-    // };
+    const onClick = (e) => {
+        e.preventDefault();
+        console.log("target: " + e.target.value)
+        let id = e.target.value
+        AgentService.getAgent(id)
+            .then(data => {
+                console.log(data.agent.name);
+                setAgent({ "name": data.agent.name, "gameScores": data.agent.gameScores });
+            })
+            .then(() => {
 
-    // const onChange = e => {
-    //     setNote({ name: e.target.value });
-    // };
+                console.log("post setAgent: " + agent);
+                props.history.push('/agent/' + id)
+            })
+            ;
+    };
 
-    // const resetForm = () => {
-    //     setNote({ name: "" });
-    // };
+
+
 
     return (
         <div>
             <ul className="list-group">
                 {
                     agents.map(agent => {
-                        return <Agent key={agent._id} agent={agent} />
+                        const id = agent._id;
+                        const name = agent.name;
+                        // console.log("id: " + agent._id)
+                        return <AgentListItem
+                            key={id}
+                            name={name}
+                            id={id}
+                            value={id}
+                            onClick={onClick} />
                     })
                 }
             </ul>
-            <br />
-            {/* <form onSubmit={onSubmit}>
-                <label htmlFor='agent'>Agent Name</label>
-                <input type="text"
-                    name='agent'
-                    value={agent.name}
-                    onChange={onChange}
-                    className='form-control'
-                    placeholder='Agent name' />
-                <button className="btn btn-lg btn-primary">Submit</button>
-            </form> */}
+
+
+
+
             {message ? <Message message={message} /> : null}
-        </div>
+        </div >
     )
 
 }
