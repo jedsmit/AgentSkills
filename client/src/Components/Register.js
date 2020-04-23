@@ -41,31 +41,44 @@ const Register = props => {
             <form onSubmit={onSubmit}>
                 <h3>Please Register</h3>
 
-                <label htmlFor='username' className='sr-only'>Username: </label>
-                <input type="text"
-                    name='username'
-                    value={user.username}
-                    onChange={onChange}
-                    className='form-control'
-                    placeholder="Enter Username" />
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor='username' className='sr-only'>Username: </label>
+                        <input type="text"
+                            name='username'
+                            value={user.username}
+                            onChange={onChange}
+                            className='form-control'
+                            placeholder="Enter Username" />
+                    </div>
+                </div>
 
-                <label htmlFor='password' className='sr-only'>Password: </label>
-                <input type="password"
-                    name='password'
-                    value={user.password}
-                    onChange={onChange}
-                    className='form-control'
-                    placeholder="Enter Password" />
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor='password' className='sr-only'>Password: </label>
+                        <input type="password"
+                            name='password'
+                            value={user.password}
+                            onChange={onChange}
+                            className='form-control'
+                            placeholder="Enter Password" />
+                    </div>
+                </div>
 
-                <label htmlFor='role' className='sr-only'>Role: </label>
-                <input type="text"
-                    name='role'
-                    value={user.role}
-                    onChange={onChange}
-                    className='form-control'
-                    placeholder="Enter Role (admin/user" />
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor='role' className='sr-only'>Role: </label>
+                        <input type="text"
+                            name='role'
+                            value={user.role}
+                            onChange={onChange}
+                            className='form-control'
+                            placeholder="Enter Role (admin/user" />
+                    </div>
+                </div>
 
                 <button className="btn btn-large btn-primary" type='submit'>Register</button>
+
             </form>
             {message ? <Message message={message} /> : null}
         </div>

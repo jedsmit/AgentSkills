@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Message from "./Message";
 import AgentService from "../Services/AgentService";
 
-const Admin = () => {
+const Admin = (props) => {
     const [agent, setAgent] = useState({});
     const [message, setMessage] = useState(null);
 
@@ -37,21 +37,32 @@ const Admin = () => {
         setAgent({ name: "" });
     };
 
+    const onClick = e => {
+        e.preventDefault();
+        props.history.push('/register');
+    }
+
     return (
         <>
             <h1>Admin Page</h1>
-            //register new agent
+            {/* register new agent */}
 
             <form onSubmit={onSubmit}>
-                <label htmlFor='agent'>Agent Name</label>
-                <input type="text"
-                    name='agent'
-                    value={agent.name}
-                    onChange={onChange}
-                    className='form-control'
-                    placeholder='Agent name' />
-                <button className="btn btn-lg btn-primary">Submit</button>
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor='agent'>Register new agent?</label>
+                        <input type="text"
+                            name='agent'
+                            value={agent.name}
+                            onChange={onChange}
+                            className='form-control'
+                            placeholder='Agent name' />
+                        <button className="btn btn-lg btn-primary">Submit</button>
+                    </div>
+                </div>
             </form>
+            <br></br>
+            <p>Register new user?   <button className="btn btn-lg btn-primary" onClick={onClick}>Click Here</button></p>
             {message ? <Message message={message} /> : null}
         </>
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./app.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Login from './Components/Login';
@@ -18,14 +19,15 @@ function App() {
     <Router>
 
       <Navbar />
-      <Route exact path="/" component={Home} />
-      <PublicRoute path="/login" component={Login} />
-      <PublicRoute path="/register" component={Register} />
-      <PublicRoute path="/blackjack" component={BlackjackSkills} />
-      <PrivateRoute path="/admin" roles={['admin']} component={Admin} />
-      <PrivateRoute path="/agents" roles={['user', 'admin']} component={AgentList} />
-      <PrivateRoute path="/agent/:id" roles={['user', 'admin']} component={AgentPage} />
-
+      <div className="container conatiner-fluid homeBg">
+        <Route exact path="/" component={Home} />
+        <PublicRoute path="/login" component={Login} />
+        <PublicRoute path="/blackjack" component={BlackjackSkills} />
+        <PrivateRoute path="/register" roles={['admin']} component={Register} />
+        <PrivateRoute path="/admin" roles={['admin']} component={Admin} />
+        <PrivateRoute path="/agents" roles={['user', 'admin']} component={AgentList} />
+        <PrivateRoute path="/agent/:id" roles={['user', 'admin']} component={AgentPage} />
+      </div>
     </Router>
   );
 }

@@ -24,6 +24,7 @@ const AgentSkills = (props) => {
     }, [scores])
 
 
+
     return (
 
         <div>
@@ -42,7 +43,7 @@ const AgentSkills = (props) => {
                     {gameNames.map((gameName, index) => {
                         const scoreIndex = index;
 
-                        return <tr key={index}>
+                        return <tr key={index} className="game-name-list-item">
                             <td key={gameName}>
                                 {gameName}
                             </td>
