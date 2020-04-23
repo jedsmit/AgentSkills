@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     // notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }],
-    // agents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }]
+    agents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }]
 
 });
 //checks for password

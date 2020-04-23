@@ -9,20 +9,37 @@ import AgentSkills from './AgentSkills';
 
 
 
-const AgentPage = (props) => {
+const AgentPage = () => {
     const [message, setMessage] = useState(null);
+    const [scores, setScores] = useState([]);
     const authContext = useContext(AuthContext);
-    const { agent } = useContext(AgentContext);
+    const agentContext = useContext(AgentContext);
+
+    const { agent } = agentContext;
+
+    const { name, gameScores } = agent;
+
+    const scoreVals = (Object.values(gameScores))
+    const gameNames = (Object.keys(gameScores))
+
+    useEffect(() => {
+        console.log(scoreVals);
+        setScores(scoreVals);
+    }, [])
+
 
 
 
     return (
-        <div>
-            <AgentNameBanner name={agent.name} />
-            <AgentSkills agent={agent} />
+        < div >
 
+            <AgentNameBanner name={name} />
+
+            <AgentSkills
+                scoreVals={scoreVals}
+                gameNames={gameNames} />
             {message ? <Message message={message} /> : null}
-        </div>
+        </div >
     )
 
 }

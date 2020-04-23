@@ -11,7 +11,8 @@ const AgentList = props => {
     const [agents, setAgents] = useState([])
     const [message, setMessage] = useState(null);
     const authContext = useContext(AuthContext);
-    const { agent, setAgent } = useContext(AgentContext);
+    const agentContext = useContext(AgentContext);
+    const { agent, setAgent } = agentContext;
 
     useEffect(() => {
         AgentService.getAgents().then(data => {
@@ -26,12 +27,12 @@ const AgentList = props => {
         let id = e.target.value
         AgentService.getAgent(id)
             .then(data => {
-                console.log(data.agent.name);
+                console.log(data.agent.gameScores);
                 setAgent({ "name": data.agent.name, "gameScores": data.agent.gameScores });
             })
             .then(() => {
 
-                console.log("post setAgent: " + agent);
+                console.log("post setAgent: " + agent.name);
                 props.history.push('/agent/' + id)
             })
             ;
