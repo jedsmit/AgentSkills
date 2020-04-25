@@ -81,7 +81,7 @@ userRouter.get('/notes', passport.authenticate('jwt', { session: false }), (req,
     })
 });
 
-//agent list 
+//get agent list 
 userRouter.get('/agents', passport.authenticate('jwt', { session: false }), (req, res) => {
     Agent.find((err, document) => {
         if (err)

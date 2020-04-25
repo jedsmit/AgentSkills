@@ -7,41 +7,25 @@ const AgentSchema = new mongoose.Schema({
         required: true,
     },
     gameScores: {
-        blackjack: {
-            type: Number,
-        },
-        baccarat: {
-            type: Number
-        },
-        poker: {
-            type: Number
-        },
-        fortunePaiGow: {
-            type: Number
-        },
-        craps: {
-            type: Number
-        },
-        roulette: {
-            type: Number
-        },
-        bjVariants: {
-            type: Number
-        },
-        pkVariants: {
-            type: Number
-        },
-        war: {
-            type: Number
-        },
-        pgVariants: {
-            type: Number
-        },
-        paiGowTiles: {
-            type: Number
-        }
+        blackjack: [Number],
+        baccarat: [Number],
+        poker: [Number],
+        fortunePaiGow: [Number],
+        craps: [Number],
+        roulette: [Number],
+        bjVariants: [Number],
+        pokerVariants: [Number],
+        war: [Number],
+        pgVariants: [Number],
+        tiles: [Number],
+
     },
-    notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
+
+    notes: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'Note'
+        }
+    ]
 
 });
 

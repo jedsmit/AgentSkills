@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import BlackjackSkills from './Components/BlackjackSkills';
 
 
+
 function App() {
 
   return (
@@ -22,12 +23,13 @@ function App() {
       <div className="container conatiner-fluid homeBg">
         <Route exact path="/" component={Home} />
         <PublicRoute path="/login" component={Login} />
-        <PublicRoute path="/blackjack" component={BlackjackSkills} />
         <PrivateRoute path="/register" roles={['admin']} component={Register} />
         <PrivateRoute path="/admin" roles={['admin']} component={Admin} />
         <PrivateRoute path="/agents" roles={['user', 'admin']} component={AgentList} />
         <PrivateRoute path="/agent/:id" roles={['user', 'admin']} component={AgentPage} />
+        <PrivateRoute path="/blackjack" roles={['user', 'admin']} component={BlackjackSkills} />
       </div>
+
     </Router>
   );
 }

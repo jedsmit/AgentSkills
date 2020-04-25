@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../Context/AuthContext';
 import { AgentContext } from '../Context/AgentContext';
+import { withRouter, Link } from 'react-router-dom';
+
+
 
 
 const AgentSkills = (props) => {
@@ -23,7 +26,12 @@ const AgentSkills = (props) => {
         console.log(gameNames + scores);
     }, [scores])
 
-
+    const onClick = (e) => {
+        e.preventDefault();
+        const gamePage = e.target.value;
+        // console.log(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1));
+        props.history.push('/' + gamePage);
+    }
 
     return (
 
@@ -42,23 +50,26 @@ const AgentSkills = (props) => {
                 <tbody>
                     {gameNames.map((gameName, index) => {
                         const scoreIndex = index;
-
+                        const linkString = '/' + gameName
                         return <tr key={index} className="game-name-list-item">
                             <td key={gameName}>
-                                {gameName}
+
+                                <Link to={linkString}> <button value={gameName} onClick={onClick}>{gameName}</button></Link>
                             </td>
                             <td>
-                                {scoreVals[scoreIndex]}
+                                {scoreVals[scoreIndex].reduce(function (a, b) {
+                                    return a + b;
+                                }, 0)}
                             </td>
                         </tr>
                     })
                     }
 
                 </tbody>
-            </table>
+            </table >
         </div >
     )
 
 }
 
-export default AgentSkills;
+export default withRouter(AgentSkills);

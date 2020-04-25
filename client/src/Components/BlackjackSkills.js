@@ -1,10 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import AgentNameBanner from "./AgentNameBanner";
+import { AgentContext } from '../Context/AgentContext';
+
 
 
 const BlackjackSkills = () => {
     const [total, setTotal] = useState(0);
     const [scores, setScores] = useState([]);
+    const agentContext = useContext(AgentContext);
+
+    const { agent } = agentContext;
+    const { name } = agent;
 
 
     const onChange = (e) => {
@@ -42,159 +48,159 @@ const BlackjackSkills = () => {
                     <form id="skillScoreForm">
 
                         Agent understands Blackjack policies and dealing procedures.
-                        <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                        <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
 
                             Agent understands Basic strategy.
-                            <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                            <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     Agent understands Blackjack game protection.
-                    <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     Agent understands and can detect Blackjack hole-card attacks.
-                    <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     Agent understands and can detect Blackjack card counting attacks.
-                    <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     Agent understands and can explain the differences between pitch and shoe games.
-                    <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     Agents understands Blackjack side bets and proprietary wagers.
-                    <div class="input-group mt-2 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
+                    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
                             </div>
 
                             {/* rating  */}
-                            <div class="row">
+                            <div className="row">
                                 <div className="col">
-                                    <input type="text" class="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
                                 </div>
                             </div>
 
                         </div>
 
                         {/* notes */}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Notes</span>
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
                             </div>
-                            <textarea class="form-control" aria-label="Notes"></textarea>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
                     </form>
 
