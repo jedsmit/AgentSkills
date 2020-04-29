@@ -9,3 +9,13 @@ body {
     text-transform: capitalize;
 }
 
+.gameButton, .agentButton {
+    width: 150px;
+    justify-content: start;
+}
+
+/* agent list component*/
+
+.agentList {
+    list-style-type: none;
+}

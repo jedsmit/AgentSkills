@@ -57,12 +57,12 @@ const Admin = (props) => {
                             onChange={onChange}
                             className='form-control'
                             placeholder='Agent name' />
-                        <button className="btn btn-lg btn-primary">Submit</button>
+                        <button>Submit</button>
                     </div>
                 </div>
             </form>
             <br></br>
-            <p>Register new user?   <button className="btn btn-lg btn-primary" onClick={onClick}>Click Here</button></p>
+            <p>Register new user?   <button onClick={onClick}>Click Here</button></p>
             {message ? <Message message={message} /> : null}
         </>
     )

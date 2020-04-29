@@ -51,10 +51,10 @@ const AgentSkills = (props) => {
                     {gameNames.map((gameName, index) => {
                         const scoreIndex = index;
                         const linkString = '/' + gameName
-                        return <tr key={index} className="game-name-list-item">
-                            <td key={gameName}>
+                        return <tr key={index} className="game-name-list-item justify-content-left">
+                            <td className="d-flex justify-content-start" key={gameName}>
 
-                                <Link to={linkString}> <button value={gameName} onClick={onClick}>{gameName}</button></Link>
+                                <Link to={linkString}> <button className="gameButton text-left" value={gameName} onClick={onClick}>{gameName}</button></Link>
                             </td>
                             <td>
                                 {scoreVals[scoreIndex].reduce(function (a, b) {

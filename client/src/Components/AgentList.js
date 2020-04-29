@@ -43,7 +43,7 @@ const AgentList = props => {
 
     return (
         <div>
-            <ul className="list-group">
+            <ul className="list-group agentList">
                 {
                     agents.map(agent => {
                         const id = agent._id;
