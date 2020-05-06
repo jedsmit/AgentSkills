@@ -3,7 +3,7 @@ import Message from "./Message";
 import AgentService from "../Services/AgentService";
 
 const Admin = (props) => {
-    const [agent, setAgent] = useState({});
+    const [agent, setAgent] = useState({ name: "" });
     const [message, setMessage] = useState(null);
 
 
@@ -13,19 +13,6 @@ const Admin = (props) => {
             console.log(data);
             const { message } = data;
             resetForm();
-            // if (!message.msgError) {
-            //     AgentService.getAgent().then(agent => {
-            //         setAgent(getData.agent);
-            //         setMessage(message);
-            //     });
-            // } else if (message.msgBody === "Unauthorized") {
-            //     setMessage(message);
-            //     authContext.setUser({ username: "", role: "" });
-            //     authContext.setIsAuthenticated(false);
-            // }
-            // else {
-            //     setMessage(message);
-            // };
         });
     };
 
@@ -56,7 +43,7 @@ const Admin = (props) => {
                             value={agent.name}
                             onChange={onChange}
                             className='form-control'
-                            placeholder='Agent name' />
+                            placeholder='Agent Name' />
                         <button>Submit</button>
                     </div>
                 </div>

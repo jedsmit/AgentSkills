@@ -27,8 +27,21 @@ const AgentList = props => {
         let id = e.target.value
         AgentService.getAgent(id)
             .then(data => {
-                console.log(data.agent.gameScores);
-                setAgent({ "name": data.agent.name, "gameScores": data.agent.gameScores });
+                // console.log(data.agent.blackjack);
+                setAgent({
+                    "name": data.agent.name,
+                    "blackjack": data.agent.blackjack,
+                    "baccarat": data.agent.baccarat,
+                    "poker": data.agent.poker,
+                    "fortunePaiGow": data.agent.fortunePaiGow,
+                    "craps": data.agent.craps,
+                    "roulette": data.agent.roulette,
+                    "bjVariants": data.agent.bjVariants,
+                    "pokerVariants": data.agent.pokerVariants,
+                    "war": data.agent.war,
+                    "pgVariants": data.agent.pgVariants,
+                    "tiles": data.agent.tiles
+                });
             })
             .then(() => {
 

@@ -32,7 +32,8 @@ export default {
             method: 'post',
             body: JSON.stringify(agent),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }).then(response => {
             if (response.status !== 401) {

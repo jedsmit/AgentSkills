@@ -17,13 +17,26 @@ const AgentPage = () => {
 
     const { agent } = agentContext;
 
-    const { name, gameScores } = agent;
+    const { name, blackjack, baccarat, poker, fortunePaiGow, craps, roulette, bjVariants, pokerVariants, war, pgVariants, tiles } = agent;
 
-    const scoreVals = (Object.values(gameScores))
-    const gameNames = (Object.keys(gameScores))
+    const scoreVals = {
+        blackjack: (Object.values(blackjack)),
+        baccarat: (Object.values(baccarat)),
+        poker: (Object.values(poker)),
+        fortunePaiGow: (Object.values(fortunePaiGow)),
+        craps: (Object.values(craps)),
+        roulette: (Object.values(roulette)),
+        bjVariants: (Object.values(bjVariants)),
+        pokerVariants: (Object.values(pokerVariants)),
+        war: (Object.values(war)),
+        pgVariants: (Object.values(pgVariants)),
+        tiles: (Object.values(tiles))
+    }
+    const gameNames = (Object.keys(scoreVals))
 
     useEffect(() => {
         console.log(scoreVals);
+        console.log(gameNames);
         setScores(scoreVals);
     }, [])
 

@@ -6,11 +6,11 @@ export const AgentContext = createContext();
 export default ({ children }) => {
     const [agent, setAgent] = useState({});
 
-    const { name, gameScores, _id } = agent;
+    const { name, blackjack, baccarat, poker, fortunePaiGow, craps, roulette, bjVariants, pokerVariants, war, pgVariants, tiles, _id, notes } = agent;
 
     return (
         <div>
-            <AgentContext.Provider value={{ agent, setAgent, name, gameScores, _id }}>
+            <AgentContext.Provider value={{ agent, setAgent, name, blackjack, baccarat, poker, fortunePaiGow, craps, roulette, bjVariants, pokerVariants, war, pgVariants, tiles, _id, notes }}>
                 {children}
             </AgentContext.Provider>
         </div>

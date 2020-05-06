@@ -7,7 +7,7 @@ import { AuthContext } from '../Context/AuthContext';
 
 const BlackjackSkills = () => {
     const [total, setTotal] = useState(0);
-    const [scores, setScores] = useState([]);
+    const [scores, setScores] = useState({});
 
     const agentContext = useContext(AgentContext);
     const { agent } = agentContext;
@@ -39,7 +39,10 @@ const BlackjackSkills = () => {
                         "4" - Very Good
                 </li>
                     <li>
-                        "5" - Expert
+                        "5" - Expert*
+                        <br></br>
+                        <br></br>
+                            *Only a Surveillance Manager can award a 5. If an agent has proven to be an expert in any area, please contact a Surveillance Manager to make the case.
                 </li>
                 </ul>
             </div>
@@ -50,6 +53,145 @@ const BlackjackSkills = () => {
                     <form id="skillScoreForm">
 
                         Agent understands Blackjack policies and dealing procedures.
+                        <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text">Current rating: <span>5</span></label>
+                                            </div>
+
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {/* notes */}
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
+                            </div>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
+                        </div>
+
+    Agent understands Basic Strategy.
+    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
+                                            </div>
+
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* notes */}
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
+                            </div>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
+                        </div>
+    Agent understands Blackjack game protection.
+    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
+                                            </div>
+
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {/* notes */}
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
+                            </div>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
+                        </div>
+    Agent understands and can detect Blackjack hole - card attacks.
+    <div className="input-group mt-2 mb-3">
+                            <div className="input-group-prepend">
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
+                                            </div>
+
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {/* notes */}
+                        <div className="input-group mb-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Notes</span>
+                            </div>
+                            <textarea className="form-control" aria-label="Notes"></textarea>
+                        </div>
                         <div className="input-group mt-2 mb-3">
                             <div className="input-group-prepend">
                                 {/* rating  */}
@@ -84,140 +226,76 @@ const BlackjackSkills = () => {
                             </div>
                             <textarea className="form-control" aria-label="Notes"></textarea>
                         </div>
-
-    Agent understands Basic strategy.
-            < div className="input-group mt-2 mb-3" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
-
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
-                                </div>
-                            </div>
-
-                        </div >
-
-                        {/* notes */}
-                        < div className="input-group mb-2" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Notes</span>
-                            </div>
-                            <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
-    Agent understands Blackjack game protection.
-            < div className="input-group mt-2 mb-3" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
-
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
-                                </div>
-                            </div>
-
-                        </div >
-
-                        {/* notes */}
-                        < div className="input-group mb-2" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Notes</span>
-                            </div>
-                            <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
-    Agent understands and can detect Blackjack hole - card attacks.
-            < div className="input-group mt-2 mb-3" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
-
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
-                                </div>
-                            </div>
-
-                        </div >
-
-                        {/* notes */}
-                        < div className="input-group mb-2" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Notes</span>
-                            </div>
-                            <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
-    Agent understands and can detect Blackjack card counting attacks.
-            < div className="input-group mt-2 mb-3" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
-
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
-                                </div>
-                            </div>
-
-                        </div >
-
-                        {/* notes */}
-                        < div className="input-group mb-2" >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Notes</span>
-                            </div>
-                            <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
     Agent understands and can explain the differences between pitch and shoe games.
-            < div className="input-group mt-2 mb-3" >
+    <div className="input-group mt-2 mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
+                                            </div>
 
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
                                 </div>
+
                             </div>
-
-                        </div >
-
+                        </div>
                         {/* notes */}
-                        < div className="input-group mb-2" >
+                        <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Notes</span>
                             </div>
                             <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
+                        </div>
     Agents understands Blackjack side bets and proprietary wagers.
-            < div className="input-group mt-2 mb-3" >
+    <div className="input-group mt-2 mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-default">Current Rating: X </span>
-                            </div>
+                                {/* rating  */}
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
+                                            </div>
 
-                            {/* rating  */}
-                            <div className="row">
-                                <div className="col">
-                                    <input type="text" className="form-control" aria-label="New rating input" aria-describedby="inputGroup-sizing-default" placeholder="New rating 1-5" />
+                                            <select className="custom-select" id="inputGroupSelect01">
+                                                <option selected>New Rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                {(role === 'admin')
+                                                    ? <option value="5" className="dropdown-item disabled">5</option>
+                                                    : null}
+                                            </select>
+                                        </div>
+
+                                    </div>
                                 </div>
+
                             </div>
-
-                        </div >
-
+                        </div>
                         {/* notes */}
-                        < div className="input-group mb-2" >
+                        <div className="input-group mb-2">
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Notes</span>
                             </div>
                             <textarea className="form-control" aria-label="Notes"></textarea>
-                        </div >
-                    </form >
+                        </div>                    </form >
 
                 </div >
             </div >

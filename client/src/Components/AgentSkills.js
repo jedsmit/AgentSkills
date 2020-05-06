@@ -57,7 +57,7 @@ const AgentSkills = (props) => {
                                 <Link to={linkString}> <button className="gameButton text-left" value={gameName} onClick={onClick}>{gameName}</button></Link>
                             </td>
                             <td>
-                                {scoreVals[scoreIndex].reduce(function (a, b) {
+                                {scoreVals[gameName].reduce(function (a, b) {
                                     return a + b;
                                 }, 0)}
                             </td>
