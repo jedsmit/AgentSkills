@@ -95,7 +95,7 @@ userRouter.get('/agents', passport.authenticate('jwt', { session: false }), (req
 
 //agent page
 userRouter.get('/agent/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Agent.findById((req.params.id)).populate('gameSores').exec((err, document) => {
+    Agent.findById((req.params.id)).populate('gameScores').exec((err, document) => {
         console.log(document)
         if (err)
             res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
@@ -143,7 +143,6 @@ userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }
     const { username, role } = req.user;
     res.status(200).json({ isAuthenticated: true, user: { username, role } });
 });
-
 
 
 module.exports = userRouter;

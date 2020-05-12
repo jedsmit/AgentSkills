@@ -27,6 +27,7 @@ export default {
 
         })
     },
+
     postAgent: agent => {
         return fetch('/user/agent', {
             method: 'post',

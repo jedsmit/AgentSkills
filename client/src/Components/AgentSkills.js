@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../Context/AuthContext';
 import { AgentContext } from '../Context/AgentContext';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -16,14 +16,14 @@ const AgentSkills = (props) => {
 
 
     const { agent } = agentContext;
-    const { name } = agent;
+    const { name, _id } = agent;
     const games = props.gameNames;
     const scoreVals = props.scoreVals;
 
     useEffect(() => {
         setGameNames(games);
         setScores(scoreVals);
-        console.log(gameNames + scores);
+        console.log(scoreVals.blackjack);
     }, [scores])
 
     const onClick = (e) => {
@@ -49,14 +49,15 @@ const AgentSkills = (props) => {
                 </thead>
                 <tbody>
                     {gameNames.map((gameName, index) => {
-                        const scoreIndex = index;
-                        const linkString = '/' + gameName
+                        // const scoreIndex = index;
+                        // const linkString = '/' + gameName + '/' + _id;
                         return <tr key={index} className="game-name-list-item justify-content-left">
                             <td className="d-flex justify-content-start" key={gameName}>
 
-                                <Link to={linkString}> <button className="gameButton text-left" value={gameName} onClick={onClick}>{gameName}</button></Link>
+                                <button className="gameButton text-left" value={gameName} onClick={onClick}>{gameName}</button>
                             </td>
                             <td>
+                                {/* adds scores together and displays total */}
                                 {scoreVals[gameName].reduce(function (a, b) {
                                     return a + b;
                                 }, 0)}

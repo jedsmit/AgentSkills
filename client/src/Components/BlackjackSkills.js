@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AgentNameBanner from './AgentNameBanner';
+import AgentService from '../Services/AgentService';
 import { AgentContext } from '../Context/AgentContext';
 import { AuthContext } from '../Context/AuthContext';
 
@@ -10,16 +11,30 @@ const BlackjackSkills = () => {
     const [scores, setScores] = useState({});
 
     const agentContext = useContext(AgentContext);
-    const { agent } = agentContext;
-    const { name } = agent;
+    const { agent, _id } = agentContext;
+    const { name, blackjack } = agent;
 
     const authContext = useContext(AuthContext);
     const { user } = authContext;
     const { role } = user;
 
+    //
+    useEffect(() => {
+        console.log(blackjack);
+    }, [])
+
+
     const onChange = (e) => {
         console.log(e.target.val)
     };
+
+
+    //Enables the fifth choice when user's role is admin
+    const adminToggler = () => {
+        return (role === 'admin')
+            ? <option value="5" className="dropdown-item disabled">5</option>
+            : null
+    }
 
     return (
         <>
@@ -60,18 +75,16 @@ const BlackjackSkills = () => {
                                     <div className="col">
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                <label className="input-group-text">Current rating: <span>5</span></label>
+                                                <label className="input-group-text" for="q1">Current rating: <span>{blackjack.q1}</span></label>
                                             </div>
 
-                                            <select className="custom-select" id="inputGroupSelect01">
+                                            <select className="custom-select" id="q1">
                                                 <option selected>New Rating</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -99,15 +112,13 @@ const BlackjackSkills = () => {
                                                 <label className="input-group-text" for="inputGroupSelect01">Current rating: <span>5</span></label>
                                             </div>
 
-                                            <select className="custom-select" id="inputGroupSelect01">
+                                            <select className="custom-select" id="q2">
                                                 <option selected>New Rating</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -139,9 +150,7 @@ const BlackjackSkills = () => {
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -174,9 +183,7 @@ const BlackjackSkills = () => {
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -208,9 +215,7 @@ const BlackjackSkills = () => {
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -243,9 +248,7 @@ const BlackjackSkills = () => {
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
@@ -278,9 +281,7 @@ const BlackjackSkills = () => {
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                {(role === 'admin')
-                                                    ? <option value="5" className="dropdown-item disabled">5</option>
-                                                    : null}
+                                                {adminToggler()}
                                             </select>
                                         </div>
 
